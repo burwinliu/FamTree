@@ -1,0 +1,28 @@
+{
+    "name": "Croissant Line",
+    "family": [
+        {
+            "id": 0,
+            "name": "Burwin Liu",
+            "start_series": 12,
+            "end_series": 14,
+            "description": "Strawberry Croissant :)",
+            "little_ids": [1],
+            "psudo_ids": [2]
+        },
+        {
+            "id": 1,
+            "name": "Henry Susantin",
+            "start_series": 14,
+            "end_series": 18,
+            "description": "??? Croissant"
+        },
+        {
+            "id": 2,
+            "name": "Sevena Lam",
+            "start_series": 14,
+            "end_series": 14,
+            "description": "??? Croissant"
+        }
+    ]
+}
