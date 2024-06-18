@@ -11,7 +11,7 @@ export default function PlotFigure() {
             width: 250,
             data: {
                 name: 'test 1',
-                description: 'test values',
+                description: 'test values that are somewhat longer and may require some wrapping',
                 startSeries: 50,
                 endSeries: 51
             }
