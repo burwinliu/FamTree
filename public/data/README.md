@@ -2,7 +2,9 @@
 This is where all the data for the website will be stored.
 
 ## How to create a new line
-Per family tree, create a new JSON file in this folder. The structure will be as follows:
+Per family tree:
+
+Create a new JSON file in this folder. The structure will be as follows:
 ```
 {
     "name": "??? Line",
@@ -20,6 +22,7 @@ Per family tree, create a new JSON file in this folder. The structure will be as
     ]
 }
 ```
+Create an tentry within index.json, and add the json file name to the "validFamilies"
 ### Details of note
 * The name of the json file will determine the img folder (i.e., a.json -> img/a/* will contain contents).
 * Each line should have an image named "family_shot.png"

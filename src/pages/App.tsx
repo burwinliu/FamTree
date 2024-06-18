@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.css';
-import PlotFigure from "src/components/shared/family/FamilyTree";
+import FamilyTree from "src/components/shared/family/FamilyTree";
+import { Tree } from 'src/models/Tree';
 
 function App() {
   return (
     <div className="App">
-      <PlotFigure/>
+      {/* TODO: @burwinliu - Add Issue to allow for selector between family lines */}
+      <FamilyTree tree={new Tree("croissant")}/>
     </div>
   );
 }
