@@ -7,8 +7,8 @@
 import React from "react";
 import { render, screen } from '@testing-library/react';
 import FamilyTree from "./FamilyTree";
-import { FakeTree } from "src/models/Tree";
-import { MemberNodeData } from "src/types/node/Node";
+import { FakeTree } from "models/Tree";
+import { MemberNodeData } from "types/node/Node";
 
 
 it("renders tree with expected nodes + edge connections", () => {

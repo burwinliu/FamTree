@@ -3,7 +3,7 @@ import { Node, NodeChildProps } from 'reaflow';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { MemberNodeInternalData } from "src/types/node/Node";
+import { MemberNodeInternalData } from "types/node/Node";
 
 export default function MemberNode() {
     const getContent = (data: MemberNodeInternalData) =>

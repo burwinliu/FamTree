@@ -1,7 +1,7 @@
-import index from "public/data/index.json"
+import index from "data/index.json"
 import { EdgeData } from "reaflow";
-import { MemberNodeData } from "src/types/node/Node";
-import { TreeStorageData } from "src/types/tree/Tree";
+import { MemberNodeData, NodeStorageData } from "types/node/Node";
+import { TreeStorageData } from "types/tree/Tree";
 
 export class Tree {
     private familyData?: TreeStorageData;
@@ -10,23 +10,61 @@ export class Tree {
 
     readonly nodeData?: MemberNodeData[];
     readonly edgeData?: EdgeData[];
+    readonly name?: string;
 
     constructor(familyName: string) {
         if (!this.validateFamilyName(familyName)) {
             return;
         }
-        this.familyData = require("public/data/" + familyName + ".json");
-        this.renderFamilyTree();
+        this.familyData = require("data/" + familyName + ".json");
+
+        // Process {@link TreeStorageData} typed JSON and convert the data into {@link MemberNodeData[]} and {@link EdgeData[]}
+        if(this.familyData === undefined) throw new Error(familyName + " is an invalid family name");
+        this.name = this.familyData.name;
+        this.baseEdgeData = [];
+        this.baseNodeData = [];
+        this.familyData.family.forEach((node: NodeStorageData) => {
+            this.baseNodeData?.push(
+                {
+                    id: node.id.toString(),
+                    height: 125,
+                    width: 250,
+                    data: {
+                        name: node.name,
+                        description: node.description,
+                        startSeries: node.start_series,
+                        endSeries: node.end_series,
+                    }
+                }
+            );
+            if (node.little_ids) {
+                node.little_ids.forEach((id: number) => {
+                    this.baseEdgeData?.push(this.constructEdgeData(node.id, id, "little"));
+                });
+            }
+            if (node.pseudo_ids) {
+                node.pseudo_ids.forEach((id: number) => {
+                    this.baseEdgeData?.push(this.constructEdgeData(node.id, id, "pseudo "));
+                });
+            }
+        });
+
+        this.nodeData = this.baseNodeData;
+        this.edgeData = this.baseEdgeData;
+
+        console.log(this.edgeData, this.nodeData);
     }
 
     private validateFamilyName(familyName: string): boolean {
         return index.validFamilies.includes(familyName);
     }
 
-    /**
-     * Process a given {@link TreeStorageData} typed JSON and convert the data into {@link MemberNodeData[]} and {@link EdgeData[]}
-     */
-    private renderFamilyTree(): void {
+    private constructEdgeData(parentId: number, childId: number, relationType: string): EdgeData{
+        return {
+            id: `${parentId}-${childId}-${relationType}`,
+            from: parentId.toString(),
+            to: childId.toString()
+        }
 
     }
 }
@@ -62,6 +100,11 @@ export class FakeTree extends Tree {
             id: '1-2',
             from: '1',
             to: '2'
+        },
+        {
+            id: '2-1',
+            from: '2',
+            to: '1'
         }
     ]
 

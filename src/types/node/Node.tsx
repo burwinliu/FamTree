@@ -16,5 +16,5 @@ export type NodeStorageData = {
     end_series: number,
     description: string,
     little_ids: number[],
-    psudo_ids: number[],
+    pseudo_ids: number[],
 }

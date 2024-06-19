@@ -1,4 +1,4 @@
-import { Tree } from "src/models/Tree";
+import { Tree } from "models/Tree";
 import { NodeStorageData } from "../node/Node";
 
 export type FamilyTreeProps = {

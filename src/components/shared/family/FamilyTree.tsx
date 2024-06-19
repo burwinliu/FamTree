@@ -1,8 +1,8 @@
 import { Canvas } from 'reaflow';
-import MemberNode from "src/components/features/tree/MemberNode"
+import MemberNode from "components/features/tree/MemberNode"
 import React from "react";
-import { FamilyTreeProps } from 'src/types/tree/Tree';
-import { Tree } from 'src/models/Tree';
+import { FamilyTreeProps } from 'types/tree/Tree';
+import { Tree } from 'models/Tree';
 
 export default function FamilyTree(props: FamilyTreeProps) {
     const tree: Tree = props.tree;

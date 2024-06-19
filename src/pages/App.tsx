@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import FamilyTree from "src/components/shared/family/FamilyTree";
-import { Tree } from 'src/models/Tree';
+import FamilyTree from "components/shared/family/FamilyTree";
+import { Tree } from 'models/Tree';
 
 function App() {
   return (

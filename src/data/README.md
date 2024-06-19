@@ -17,7 +17,7 @@ Create a new JSON file in this folder. The structure will be as follows:
             "description": "description",
             "details": "Optional Additional details",
             "little_ids": [1],
-            "psudo_ids": [2]
+            "pseudo_ids": [2]
         }
     ]
 }
@@ -40,7 +40,7 @@ Create an tentry within index.json, and add the json file name to the "validFami
     "description": "description",
     "details": "Optional Additional details",
     "little_ids": [1],
-    "psudo_ids": [2]
+    "pseudo_ids": [2]
 }
 ```
 3. Update your family's next ID for future refernce
