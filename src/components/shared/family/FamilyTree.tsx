@@ -1,19 +1,25 @@
+import React, { MutableRefObject, useRef } from "react";
 import { Canvas } from 'reaflow';
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch"
+
 import MemberNode from "components/features/tree/MemberNode"
-import React from "react";
 import { FamilyTreeProps } from 'types/tree/Tree';
 import { Tree } from 'models/Tree';
 
 export default function FamilyTree(props: FamilyTreeProps) {
-    const tree: Tree = props.tree;
+    const tree: MutableRefObject<Tree> = useRef(props.tree);
 
     return (
-        <Canvas
-            maxWidth={800}
-            maxHeight={600}
-            nodes={tree.nodeData}
-            edges={tree.edgeData}
-            node={MemberNode}
-        />
+        <TransformWrapper wheel={{ step: 40 }} maxScale={4} limitToBounds={false}>
+            <TransformComponent>
+                <Canvas
+                    fit={true}
+                    readonly={true}
+                    nodes={tree.current.nodeData}
+                    edges={tree.current.edgeData}
+                    node={MemberNode}
+                />
+            </TransformComponent>
+        </TransformWrapper>
     );
 }
