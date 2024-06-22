@@ -3,9 +3,9 @@ import { Canvas, CanvasPosition, CanvasRef } from 'reaflow';
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch"
 
 import MemberNode from "components/features/tree/MemberNode"
+import MemberEdge from "components/features/tree/MemberEdge"
 import { FamilyTreeProps } from 'types/tree/Tree';
 import { Tree } from 'models/Tree';
-import { debounce } from "lodash";
 import { useEffect } from "react";
 
 export default function FamilyTree(props: FamilyTreeProps) {
@@ -17,17 +17,11 @@ export default function FamilyTree(props: FamilyTreeProps) {
 
     useEffect(() => {
         if (familyWrapperRef && familyWrapperRef.current) {
+            // Offset to ensure that this does not infinitely expand when set
             setWidth(familyWrapperRef.current!.clientWidth-5);
             setHeight(familyWrapperRef.current!.clientHeight-5);
         }
     }, [familyWrapperRef.current?.clientWidth, familyWrapperRef.current?.clientHeight]);
-
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         canvasRef?.current?.fitCanvas?.();
-    //         console.log("FITTED");
-    //     }, 100);
-    // }, [canvasRef]);
 
     return (
         <div ref={familyWrapperRef} style={{ height: "100%", width: "100%", maxHeight: "100%", maxWidth: "100%" }}>
@@ -42,6 +36,7 @@ export default function FamilyTree(props: FamilyTreeProps) {
                         nodes={tree.current.nodeData}
                         edges={tree.current.edgeData}
                         node={MemberNode}
+                        edge={MemberEdge}
                         defaultPosition={CanvasPosition.CENTER}
                         maxHeight={height}
                         maxWidth={width}

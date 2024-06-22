@@ -8,7 +8,6 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 
 function App() {
   return (
@@ -18,10 +17,9 @@ function App() {
     }}>
       <AppBar position="sticky">
         <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography variant="h6">
             Family Tree
           </Typography>
-          <Button color="inherit">Switch Families</Button>
         </Toolbar>
       </AppBar>
       <Grid

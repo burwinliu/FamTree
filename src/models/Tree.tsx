@@ -1,15 +1,16 @@
 import index from "data/index.json"
 import { EdgeData } from "reaflow";
+import { EdgeInternalData, EdgeType } from "types/edge/Edge";
 import { MemberNodeData, NodeStorageData } from "types/node/Node";
 import { TreeStorageData } from "types/tree/Tree";
 
 export class Tree {
     private familyData?: TreeStorageData;
     private baseNodeData?: MemberNodeData[];
-    private baseEdgeData?: EdgeData[];
+    private baseEdgeData?: EdgeData<EdgeInternalData>[];
 
     readonly nodeData?: MemberNodeData[];
-    readonly edgeData?: EdgeData[];
+    readonly edgeData?: EdgeData<EdgeInternalData>[];
     readonly name?: string;
 
     constructor(familyName: string) {
@@ -39,12 +40,12 @@ export class Tree {
             );
             if (node.little_ids) {
                 node.little_ids.forEach((id: number) => {
-                    this.baseEdgeData?.push(this.constructEdgeData(node.id, id, "little"));
+                    this.baseEdgeData?.push(this.constructEdgeData(node.id, id, EdgeType.CHIILD));
                 });
             }
             if (node.pseudo_ids) {
                 node.pseudo_ids.forEach((id: number) => {
-                    this.baseEdgeData?.push(this.constructEdgeData(node.id, id, "pseudo "));
+                    this.baseEdgeData?.push(this.constructEdgeData(node.id, id, EdgeType.PSEUDO));
                 });
             }
         });
@@ -59,11 +60,14 @@ export class Tree {
         return index.validFamilies.includes(familyName);
     }
 
-    private constructEdgeData(parentId: number, childId: number, relationType: string): EdgeData{
+    private constructEdgeData(parentId: number, childId: number, relationType: EdgeType): EdgeData{
         return {
             id: `${parentId}-${childId}-${relationType}`,
             from: parentId.toString(),
-            to: childId.toString()
+            to: childId.toString(),
+            data: {
+                edge_type: relationType
+            }
         }
 
     }
@@ -95,16 +99,22 @@ export class FakeTree extends Tree {
 
         }
     ];
-    readonly edgeData: EdgeData[] = [
+    readonly edgeData: EdgeData<EdgeInternalData>[] = [
         {
             id: '1-2',
             from: '1',
-            to: '2'
+            to: '2',
+            data: {
+                edge_type: EdgeType.CHIILD
+            }
         },
         {
             id: '2-1',
             from: '2',
-            to: '1'
+            to: '1',
+            data: {
+                edge_type: EdgeType.PSEUDO
+            }
         }
     ]
 
