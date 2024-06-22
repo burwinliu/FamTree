@@ -15,13 +15,52 @@
             "name": "Henry Susantin",
             "start_series": 14,
             "end_series": 18,
-            "description": "??? Croissant"
+            "description": "??? Croissant",
+            "little_ids": [3,4]
         },
         {
             "id": 2,
             "name": "Sevena Lam",
             "start_series": 14,
             "end_series": 14,
+            "description": "??? Croissant"
+        },
+        {
+            "id": 3,
+            "name": "Neha Boda",
+            "start_series": -1,
+            "end_series": -1,
+            "description": "??? Croissant",
+            "little_ids": [5]
+        },
+        {
+            "id": 4,
+            "name": "Minh Nguyen",
+            "start_series": -1,
+            "end_series": -1,
+            "description": "??? Croissant",
+            "little_ids": [6]
+        },
+        {
+            "id": 5,
+            "name": "Annie Han",
+            "start_series": -1,
+            "end_series": -1,
+            "description": "??? Croissant"
+        },
+        {
+            "id": 6,
+            "name": "Patricia Jimenez",
+            "start_series": -1,
+            "end_series": -1,
+            "description": "??? Croissant",
+            "little_ids": [7]
+        },
+        {
+            "id": 7,
+            "name": "Erick Guerrero",
+            "start_series": -1,
+            "end_series": -1,
             "description": "??? Croissant"
         }
     ]
