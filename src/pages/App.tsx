@@ -31,7 +31,6 @@ function App() {
           className='canvas-wrapper'
           sm={true}
         >
-          {/* TODO: @burwinliu - Add Issue to allow for selector between family lines */}
           <FamilyTree tree={new Tree("croissant")} />
         </Grid>
       </Grid>
