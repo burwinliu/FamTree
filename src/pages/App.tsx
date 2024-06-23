@@ -29,7 +29,7 @@ function App() {
         <Grid
           item
           className='canvas-wrapper'
-          sm={true}
+          sx={{flexGrow: 1}}
         >
           <FamilyTree tree={new Tree("croissant")} />
         </Grid>
